@@ -44,3 +44,4 @@
 ## Feedback
 * This was a fun and challenging code assessment. The CSV parsing was particulary challenging and I didn't have time to do a very good job. I handled the varying formats by simply skipping rows that my code didn't like, but that's something I would have liked to solve better. I am sure there is an existing solution I could use somewhere.
 * Docker is a big topic and I enjoyed getting more hands on with it.
+* If you would like, I have a side project where I am building a Progressive Web App using React, Rails, and Service-Workers here: https://github.com/WriterZephos/StoicQuoteBook. I have temporarily made that repo public.
