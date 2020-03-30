@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_023709) do
+ActiveRecord::Schema.define(version: 2020_03_30_041346) do
 
   create_table "ufo_sightings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.datetime "sighting_date"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2020_03_30_023709) do
     t.text "comments"
     t.text "city"
     t.text "state"
-    t.decimal "latitude", precision: 10
-    t.decimal "longitude", precision: 10
+    t.decimal "latitude", precision: 10, scale: 7
+    t.decimal "longitude", precision: 10, scale: 7
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
