@@ -38,4 +38,16 @@ class HotspotLocatorTest < ActiveSupport::TestCase
     assert hotspot_loc.point_within_range(point_inside_range, from_point, 750)
     refute hotspot_loc.point_within_range(point_outside_range, from_point, 750)
   end
+
+  def test_point_within_hotspot_range
+    point_inside_range = {long: 2, lat: 2}
+    point_outside_range = {long: 100, lat: -100}
+    hotspot_point = {long: -2,lat: -2}
+
+    hotspot_loc = HotspotLocator.new([hotspot_point], 750)
+    
+    assert hotspot_loc.point_within_hotspot_range(point_inside_range)
+    refute hotspot_loc.point_within_hotspot_range(point_outside_range)
+  end
+
 end
