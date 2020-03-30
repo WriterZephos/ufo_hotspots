@@ -1,6 +1,13 @@
 # README
 
 ## How to build and run the app
+1. Pull repo and run `sudo docker build --tag ufo_hotspots:2.3 .` inside project directory
+2. Run `sudo docker-compose up`
+3. Navigate in a browser to localhost:8080 to see the app render this file
+4. For the next step, I tried to accomplish inside the docker container but I could not get my app to connect to the mysql database due to this error: `Mysql2::Error::ConnectionError: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'`
+5. Stop all containers
+6. Start mysql (if installed) and run `rails server`
+7. From the app directory, run `bin/hotspot_locator.rb <relative path to csv file>` to load ufo sightings and get json results back.
 
 ## Overview
 * Environment setup: I had a brand new linux partition I wanted to use for this (my only other personal dev environment was windows and I have had issues developing in ruby there) but I am not a huge linux guy so that presented some challenges. I needed to install quite a few things, but I didn't count that as time working on the app. The only notable technology I used besides the obvious (ruby/rails/mysql) was Visual Studio Code with my favorite extensions.
@@ -34,3 +41,6 @@
 4. Generate a controller, index action, and view to show ufo sightings as they come in. Implement an auto refresh with javascript to make it real-time.
 5. Do more, and more, and more...
 
+## Feedback
+* This was a fun and challenging code assessment. The CSV parsing was particulary challenging and I didn't have time to do a very good job. I handled the varying formats by simply skipping rows that my code didn't like, but that's something I would have liked to solve better. I am sure there is an existing solution I could use somewhere.
+* Docker is a big topic and I enjoyed getting more hands on with it.

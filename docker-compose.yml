@@ -1,7 +1,7 @@
 version: '3'
 services:
   application:
-    image: ufo_hotspots:2.0
+    image: ufo_hotspot:2.3
     container_name: ufo
     ports:
       - "8080:3000"
