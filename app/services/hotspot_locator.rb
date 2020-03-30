@@ -26,4 +26,10 @@ class HotspotLocator
     end
     in_range.any?
   end
+
+  def points_within_hotspot_range(points)
+    points.select do |point|
+      point_within_hotspot_range(point)
+    end
+  end
 end
