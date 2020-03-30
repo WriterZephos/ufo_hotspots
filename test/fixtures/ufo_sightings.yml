@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sighting_date: 2020-03-29 20:37:09
+  shape: MyString
+  duration: 1
+  comments: MyText
+  city: MyText
+  state: MyText
+  latitude: 9.99
+  longitude: 9.99
+
+two:
+  sighting_date: 2020-03-29 20:37:09
+  shape: MyString
+  duration: 1
+  comments: MyText
+  city: MyText
+  state: MyText
+  latitude: 9.99
+  longitude: 9.99
