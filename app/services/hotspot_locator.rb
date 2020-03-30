@@ -8,4 +8,9 @@ class HotspotLocator
   def evaluate_distance_miles(point_x, point_y)
     69 * evaluate_distance(point_x, point_y)
   end
+
+  def points_within_range(point_x, point_y, range)
+    miles_dist = evaluate_distance_miles(point_x, point_y)
+    miles_dist < range
+  end
 end
