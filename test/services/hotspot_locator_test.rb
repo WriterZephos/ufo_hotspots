@@ -8,54 +8,67 @@ class HotspotLocatorTest < ActiveSupport::TestCase
   end
 
   def test_hotspot_evaluate_distance
-    point_x = {long: 2, lat: 2}
-    point_y = {long: -2, lat: -2}
+    sighting_x = {longitude: 2, latitude: 2}
+    sighting_y = {longitude: -2, latitude: -2}
 
     hotspot_loc = HotspotLocator.new
-    result = hotspot_loc.evaluate_distance(point_x, point_y)
+    result = hotspot_loc.evaluate_distance(sighting_x, sighting_y)
     
     assert_equal 5.6569, result.round(4)
   end
 
   def test_hotspot_evaluate_distance_miles
-    point_x = {long: 2, lat: 2}
-    point_y = {long: -2, lat: -2}
+    sighting_x = {longitude: 2, latitude: 2}
+    sighting_y = {longitude: -2, latitude: -2}
     expected_miles = (5.6569 * 69).round(1)
 
     hotspot_loc = HotspotLocator.new
-    miles_dist = hotspot_loc.evaluate_distance_miles(point_x, point_y)
+    miles_dist = hotspot_loc.evaluate_distance_miles(sighting_x, sighting_y)
 
     assert_equal expected_miles, miles_dist.round(1)
   end
 
-  def test_point_within_range
-    point_inside_range = {long: 2, lat: 2}
-    point_outside_range = {long: 100, lat: -100}
-    from_point = {long: -2,lat: -2}
+  def test_sighting_within_range
+    sighting_inside_range = {longitude: 2, latitude: 2}
+    sighting_outside_range = {longitude: 100, latitude: -100}
+    from_sighting = {longitude: -2,latitude: -2}
 
     hotspot_loc = HotspotLocator.new
 
-    assert hotspot_loc.point_within_range(point_inside_range, from_point, 750)
-    refute hotspot_loc.point_within_range(point_outside_range, from_point, 750)
+    assert hotspot_loc.sighting_within_range(sighting_inside_range, from_sighting, 750)
+    refute hotspot_loc.sighting_within_range(sighting_outside_range, from_sighting, 750)
   end
 
-  def test_point_within_hotspot_range
-    point_inside_range = {long: 2, lat: 2}
-    point_outside_range = {long: 100, lat: -100}
-    hotspot_point = {long: -2,lat: -2}
+  def test_sighting_within_hotspot_range
+    sighting_inside_range = {longitude: 2, latitude: 2}
+    sighting_outside_range = {longitude: 100, latitude: -100}
+    hotspot_sighting = {longitude: -2,latitude: -2}
 
-    hotspot_loc = HotspotLocator.new([hotspot_point], 750)
+    hotspot_loc = HotspotLocator.new([hotspot_sighting], 750)
     
-    assert hotspot_loc.point_within_hotspot_range(point_inside_range)
-    refute hotspot_loc.point_within_hotspot_range(point_outside_range)
+    assert hotspot_loc.sighting_within_hotspot_range(sighting_inside_range)
+    refute hotspot_loc.sighting_within_hotspot_range(sighting_outside_range)
   end
 
-  def test_points_within_hotspot_range
-    points_to_test = [{long: 2, lat: 2},{long: 1, lat: -1},{long: 100, lat: -100},{long: 500, lat: -500}]
-    hotspot_point = {long: -2,lat: -2}
+  def test_sightings_within_hotspot_range
+    sightings_to_test = [{longitude: 2, latitude: 2},{longitude: 1, latitude: -1},{longitude: 100, latitude: -100},{longitude: 500, latitude: -500}]
+    hotspot_sighting = {longitude: -2,latitude: -2}
 
-    hotspot_loc = HotspotLocator.new([hotspot_point], 750)
+    hotspot_loc = HotspotLocator.new([hotspot_sighting], 750)
     
-    assert_equal 2, hotspot_loc.points_within_hotspot_range(points_to_test).count
+    assert_equal 2, hotspot_loc.sightings_within_hotspot_range(sightings_to_test).count
+  end
+
+  def test_sightings_within_hotspot_range_use_model
+    sightings_to_test = [
+      UfoSighting.new({longitude: 2, latitude: 2}),
+      UfoSighting.new({longitude: 1, latitude: -1}),
+      UfoSighting.new({longitude: 100, latitude: -100}),
+      UfoSighting.new({longitude: 500, latitude: -500})]
+    hotspot_sighting = UfoSighting.new({longitude: -2,latitude: -2})
+
+    hotspot_loc = HotspotLocator.new([hotspot_sighting], 750)
+    
+    assert_equal 2, hotspot_loc.sightings_within_hotspot_range(sightings_to_test).count
   end
 end
