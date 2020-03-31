@@ -28,6 +28,4 @@ all_sightings = UfoSighting.all
 puts "\nCalculating results..."
 in_range = locator.sightings_within_hotspot_range(all_sightings)
 puts "#{in_range.count}/#{all_sightings.count} reported sightings are withing 750 miles of a hotspot."
-puts "Press enter to print JSON results"
-STDIN.getch
 puts in_range.to_json
