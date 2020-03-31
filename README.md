@@ -8,6 +8,7 @@
 5. Stop all containers
 6. Start mysql (if installed) and run `rails server`
 7. From the app directory, run `bin/hotspot_locator.rb <relative path to csv file>` to load ufo sightings and get json results back.
+8. A dump of the json results from my tests is included. The file is json_response.json
 
 ## Overview
 * Environment setup: I had a brand new linux partition I wanted to use for this (my only other personal dev environment was windows and I have had issues developing in ruby there) but I am not a huge linux guy so that presented some challenges. I needed to install quite a few things, but I didn't count that as time working on the app. The only notable technology I used besides the obvious (ruby/rails/mysql) was Visual Studio Code with my favorite extensions.
