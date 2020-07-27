@@ -28,7 +28,6 @@
 * TDD is time-consuming, so I didn't accomplish as much as I wanted. What remains to be done are things I am confident I could do with a bit more time. Web applications are what I have done the most in Ruby, so controllers, routes, erb templates and models are all within my wheelhouse.
 * I accidentally lost a lot of changes at one point by running the wrong git command... luckily I still had my files open in my IDE and could resave them. I committed each change separately again so that my workflow would still be evident in my git history.
 * At first I tried using the Geometry gem, but it gave me errors and I didn't want to risk losing a lot of time going down a rabit hole, so I scrapped it.
-* I have only used CSV in ruby once or twice, so I had to read up on that.
 * I wasn't sure what styleguide to follow (seattle or standard).
 * I ran into a lot of issues with getting docker-compose to play nicely with my environment.
 
@@ -36,7 +35,7 @@
 * One degree in lattitude or longitude is 69 miles, even though it actually varies slightly (according to google).
 
 ## Next steps (assume these would be done with TDD)
-1. Create a controller and controller action to handle ufo_sighting data posts, call the HotspotLocator and return the result as JSON. Add routes to routes.rb.
+1. Create a controller and controller action to handle ufo_sighting data post requests, call the HotspotLocator and return the result as JSON. Add routes to routes.rb.
 2. Generate a controller action for an API to retrieve stored ufo sighting withing range of hotspots.
 3. Generate a ufo_sightings controller for basic CRUD operations, with assciated views.
 4. Generate a controller, index action, and view to show ufo sightings as they come in. Implement an auto refresh with javascript to make it real-time.
